@@ -4,24 +4,22 @@
 -   zmienna bok - dlugosc boku
 -   pierwszy wieszcholek w 0@0
 -   dodac metody jak w kwadracie:
-    - [ ] **dodawanie pol figur**
+    - [x] **dodawanie pol figur**
         dodaje dwie figury zwraca nowa figure o danym polu
-    - [ ] **pole**
+    - [x] **pole**
         oblicza pole figury
 
 ## 2. Wielokat
+https://www.desmos.com/calculator/gkk0epewct
+
 **Rozszerzyc o**
-- [ ] **metoda skaluj przyjmująca liczbe (skaluj: liczba)**
+- [x] **metoda skaluj przyjmująca liczbe (skaluj: liczba)**
     -   przeskaluj bok zgodnie z podana skala
     -   trzeba pewnie zaktualizowac wieszcholki
-- [ ] **metoda druku**
+- [x] **metoda druku**
     - wypisuje wieszczcholki i pole wielokata - instruckja pkt. 3 (idk ocb w tym cytacie)
 
-> Dodając komunikaty
-> Przekształceń oraz inne komunikaty wynikające z treści zadania, dodaj
-> również wypisywanie ich wyniku w komunikacie „drukuj”
-
-- [ ] **metoda obroc przyjmuje kat**
+- [x] **metoda obroc przyjmuje kat**
     -   sprawdza czy 0 < kat < 90
     -   obraca odbiorce o kat w prawo (chyba chodzi o punkty)
 
