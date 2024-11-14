@@ -63,22 +63,21 @@ Object subclass: #Wielokat
 				katRad := kat * Float pi / 180. 
 				srodek := self srodekGeometryczny.
 				wierzcholki := wierzcholki collect: [:wierzcholek |
-					| xRel yRel rX rY xRotated yRotated |
-					xRel := (wierzcholek x - srodek x) asFloatE.
-					yRel := (wierzcholek y - srodek y) asFloatE.
+					| relative relativeRotated originalRotated |
+					relative := (wierzcholek - srodek).
 
-					rX := (xRel * katRad cos) asFloatE - (yRel * katRad sin) asFloatE.
-					rY := (xRel * katRad sin) asFloatE + (yRel * katRad cos) asFloatE.
+					relativeRotated := Point new.
+					relativeRotated x: (relative x * katRad cos) - (relative y * katRad sin).
+					relativeRotated y: (relative x * katRad sin) + (relative y * katRad cos).
 
-					xRotated := (rX + (srodek x asFloatE)) asFloatE.
-					yRotated := (rY + (srodek y asFloatE)) asFloatE.
+					originalRotated := Point new.
+					originalRotated x: (relativeRotated x + (srodek x asFloatE)) asFloatE.
+					originalRotated y: (relativeRotated y + (srodek y asFloatE)) asFloatE.
 
-					xRotated @ yRotated
+					originalRotated
 				].
 			]
-			ifFalse: [^ 'Podano zly kat'].
-
-
+			ifFalse: ['Podano zly kat' displayNl].
 			!
 	 !
 
@@ -231,7 +230,6 @@ Wielokat subclass: #Kwadrat
 			super drukuj.
 			('	Bok: ', self bok printString) displayNl.! !
 
-
 | k1 k2 k3 |
 k1:=Kwadrat new initialize: 4.
 k2:=Kwadrat new initialize: 5. 
@@ -242,6 +240,8 @@ k3 drukuj.
 k3 skaluj: 2.
 k3 drukuj.
 
+Transcript cr; cr.
+
 | t1 t2 t3 |
 t1:=TrojkatRownoboczny new initialize: 4.
 t2:=TrojkatRownoboczny new initialize: 5.
@@ -251,6 +251,3 @@ t3 skaluj: 2.
 t3 drukuj.
 t3 obroc: 45.
 t3 drukuj.
-
-
-
