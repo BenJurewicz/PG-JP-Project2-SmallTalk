@@ -54,7 +54,33 @@ Object subclass: #Wielokat
 	        sX := (wierzcholek x - srodek x) * skala + srodek x.
 	        sY := (wierzcholek y - srodek y) * skala + srodek y.
 	        sX @ sY.
-	    ].! !
+	    ]. !
+		
+	obroc: kat   
+		(kat > 0 and: [kat < 90])
+			ifTrue: [
+				| srodek katRad |
+				katRad := kat * Float pi / 180. 
+				srodek := self srodekGeometryczny.
+				wierzcholki := wierzcholki collect: [:wierzcholek |
+					| xRel yRel rX rY xRotated yRotated |
+					xRel := (wierzcholek x - srodek x) asFloatE.
+					yRel := (wierzcholek y - srodek y) asFloatE.
+
+					rX := (xRel * katRad cos) asFloatE - (yRel * katRad sin) asFloatE.
+					rY := (xRel * katRad sin) asFloatE + (yRel * katRad cos) asFloatE.
+
+					xRotated := (rX + (srodek x asFloatE)) asFloatE.
+					yRotated := (rY + (srodek y asFloatE)) asFloatE.
+
+					xRotated @ yRotated
+				].
+			]
+			ifFalse: [^ 'Podano zly kat'].
+
+
+			!
+	 !
 
 
 	!Wielokat methodsFor: 'accessing'!
@@ -211,6 +237,8 @@ k1:=Kwadrat new initialize: 4.
 k2:=Kwadrat new initialize: 5. 
 k3:=(k1 + k2). 
 k3 drukuj.
+k3 obroc: 45.
+k3 drukuj.
 k3 skaluj: 2.
 k3 drukuj.
 
@@ -221,3 +249,8 @@ t3:=(t1 + t2).
 t3 drukuj.
 t3 skaluj: 2.
 t3 drukuj.
+t3 obroc: 45.
+t3 drukuj.
+
+
+
